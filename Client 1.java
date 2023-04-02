@@ -3,7 +3,7 @@ import java.io.*;
 
 public class Client {
    public static void main(String[] args) throws IOException {
-      Socket socket = new Socket("localhost", 5000);
+      Socket socket = new Socket("192.168.46.106", 5000);
       BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
       PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 
