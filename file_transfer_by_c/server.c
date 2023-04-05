@@ -6,7 +6,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-#define PORT 12345
+#define PORT 8080
 #define MAX_BUF_SIZE 1024
 
 void error(const char *msg)
