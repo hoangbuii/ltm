@@ -8,7 +8,7 @@
 #include <netdb.h>
 
 #define MAX_BUF_SIZE 1024
-#define PORT 5001
+#define PORT 8080
 
 void error(const char *msg)
 {
