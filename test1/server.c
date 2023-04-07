@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
     char filesize_str[MAXSIZE];
     sprintf(filesize_str, "%ld", filesize);
     send(connfd, filesize_str, strlen(filesize_str), 0);
-    long int filesize = atol(filesize_str);
+    //long int filesize = atol(filesize_str);
     printf("File size: %ld\n", filesize);
 
     // send file to client
