@@ -80,6 +80,8 @@ int main(int argc, char *argv[])
     char filesize_str[MAXSIZE];
     sprintf(filesize_str, "%ld", filesize);
     send(connfd, filesize_str, strlen(filesize_str), 0);
+    long int filesize = atol(filesize_str);
+    printf("File size: %ld\n", filesize);
 
     // send file to client
     fp = fopen(filename, "rb");
@@ -92,6 +94,7 @@ int main(int argc, char *argv[])
     while ((n = fread(buffer, 1, MAXSIZE, fp)) > 0) {
         send(connfd, buffer, n, 0);
     }
+    printf("File has sent succesfully.\n");
     fclose(fp);
 
     // close connection
