@@ -41,6 +41,8 @@ int main(int argc, char *argv[])
     if (connect(sockfd, (struct sockaddr *)&servaddr, sizeof(servaddr)) == -1) {
         perror("connect");
         exit(EXIT_FAILURE);
+    } else {
+        printf("Connected to server\n");
     }
 
     // send command to server
