@@ -8,6 +8,7 @@
 #include <arpa/inet.h>
 #include <errno.h>
 
+#define PORT 8080
 #define MAXSIZE 1024
 
 int main(int argc, char *argv[])
