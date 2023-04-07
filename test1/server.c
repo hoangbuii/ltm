@@ -46,6 +46,7 @@ int main(int argc, char *argv[])
 
     // accept a connection
     connfd = accept(sockfd, (struct sockaddr *)&clientaddr, &len);
+    printf("Client connected: %s\n", (struct sockaddr *)&clientaddr);
 
     // receive command from client
     n = recv(connfd, buffer, MAXSIZE, 0);
