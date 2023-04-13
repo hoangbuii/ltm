@@ -61,14 +61,18 @@ int main() {
         string filename(buffer);
 
         // Open file and get size
+        int success = 0;
         ifstream file(filename, ios::binary);
         if (!file.is_open()) {
             cout << "File " << filename << " not found" << endl;
-            sendto(serverSocket, "ERROR", strlen("ERROR"), 0, (struct sockaddr *)&clientAddress, len);
+            sendto(serverSocket, success, sizeof(success), 0);
+            //sendto(serverSocket, "ERROR", strlen("ERROR"), 0, (struct sockaddr *)&clientAddress, len);
             //exit(EXIT_FAILURE);
             continue;
         } else {
-            sendto(serverSocket, "OK", strlen("OK"), 0, (struct sockaddr *)&clientAddress, len);
+            success = 1;
+            sendto(serverSocket, success, sizeof(success), 0);
+            //sendto(serverSocket, "OK", strlen("OK"), 0, (struct sockaddr *)&clientAddress, len);
         }
         file.seekg(0, ios::end);
         int fileSize = file.tellg();
