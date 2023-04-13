@@ -49,8 +49,6 @@ int main() {
         if (recv(clientSocket, buffer, BUFFER_SIZE, 0) < 0) {
             perror("recv failed");
             exit(EXIT_FAILURE);
-        } else {
-            cout << buffer;
         }
 
     while (true) {
@@ -64,11 +62,14 @@ int main() {
         // Receive file size from server
         int fileSize;
         memset(buffer, 0, sizeof(buffer));
-        if (recv(clientSocket, (char *)&fileSize, sizeof(int), 0) < 0) {
+        if (recv(clientSocket, buffer, BUFFER_SIZE, 0) < 0) {
             perror("recv failed");
             exit(EXIT_FAILURE);
+        } else {
+            cout << fileSize;
         }
 
+        fileSize = atol(buffer);
         // Display file size and download file
         cout << "File size: " << fileSize << " bytes" << endl;
         ofstream file(filename, ios::binary);
