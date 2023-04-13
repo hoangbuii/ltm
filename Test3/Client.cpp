@@ -64,10 +64,10 @@ int main() {
             perror("recv failed");
             exit(EXIT_FAILURE);
         } 
-        cout << buffer << endl;
-        // if (buffer == "ERROR") {
-        //    continue;
-        // }
+        cout << buffer << '.' << endl;
+        if (buffer == "ERROR") {
+            continue;
+        }
 
         // Receive file size from server
         int fileSize;
