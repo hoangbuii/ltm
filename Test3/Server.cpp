@@ -67,6 +67,8 @@ int main() {
             sendto(serverSocket, "ERROR", strlen("ERROR"), 0, (struct sockaddr *)&clientAddress, len);
             //exit(EXIT_FAILURE);
             continue;
+        } else {
+            sendto(serverSocket, "OK", strlen("OK"), 0, (struct sockaddr *)&clientAddress, len);
         }
         file.seekg(0, ios::end);
         int fileSize = file.tellg();
