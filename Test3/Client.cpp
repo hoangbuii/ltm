@@ -76,7 +76,7 @@ int main() {
             perror("recv failed");
             exit(EXIT_FAILURE);
         } 
-        cout << success << endl;
+        cout << '-' << success << '-' << endl;
         if (success == 0) {
             continue;
         }
