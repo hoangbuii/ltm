@@ -71,7 +71,7 @@ int main() {
             continue;
         } else {
             success = 1;
-            sendto(serverSocket, success, sizeof(success), 0);
+            sendto(serverSocket, &success, sizeof(success), 0);
             //sendto(serverSocket, "OK", strlen("OK"), 0, (struct sockaddr *)&clientAddress, len);
         }
         file.seekg(0, ios::end);
