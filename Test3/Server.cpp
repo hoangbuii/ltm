@@ -37,6 +37,7 @@ int main() {
 
     len = sizeof(clientAddress);
     memset(buffer, 0, sizeof(buffer));
+    cout << "Client connected!"
 
     // Receive request from client
         if (recvfrom(serverSocket, buffer, BUFFER_SIZE, 0, (struct sockaddr *)&clientAddress, (socklen_t *)&len) < 0) {
