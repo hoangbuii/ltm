@@ -66,6 +66,7 @@ int main() {
         } 
         cout << buffer << '.' << endl;
         if (buffer == "ERROR") {
+            cout << "!!!" << endl;
             continue;
         }
 
