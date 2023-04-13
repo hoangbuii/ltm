@@ -65,13 +65,13 @@ int main() {
         ifstream file(filename, ios::binary);
         if (!file.is_open()) {
             cout << "File " << filename << " not found" << endl;
-            sendto(serverSocket, &success, sizeof(success), 0, (struct sockaddr *)&clientAddress, (socklen_t *)&len);
+            send(serverSocket, &success, sizeof(success), 0);
             //sendto(serverSocket, "ERROR", strlen("ERROR"), 0, (struct sockaddr *)&clientAddress, len);
             //exit(EXIT_FAILURE);
             continue;
         } else {
             success = 1;
-            sendto(serverSocket, &success, sizeof(success), 0, (struct sockaddr *)&clientAddress, (socklen_t *)&len);
+            send(serverSocket, &success, sizeof(success), 0);
             //sendto(serverSocket, "OK", strlen("OK"), 0, (struct sockaddr *)&clientAddress, len);
         }
         file.seekg(0, ios::end);
