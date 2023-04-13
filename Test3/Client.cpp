@@ -59,20 +59,20 @@ int main() {
         cin >> filename;
         send(clientSocket, filename.c_str(), filename.length(), 0);
 
-        // Receive file size from server
-        int fileSize;
-        memset(buffer, 0, sizeof(buffer));
-        if (recv(clientSocket, (char *)&fileSize, sizeof(int), 0) < 0) {
-            perror("recv failed");
-            exit(EXIT_FAILURE);
-        }
-
         memset(buffer, 0, sizeof(buffer));
         if (recv(clientSocket, buffer, BUFFER_SIZE, 0) < 0) {
             perror("recv failed");
             exit(EXIT_FAILURE);
         } else {
             cout << buffer << endl;
+        }
+
+        // Receive file size from server
+        int fileSize;
+        memset(buffer, 0, sizeof(buffer));
+        if (recv(clientSocket, (char *)&fileSize, sizeof(int), 0) < 0) {
+            perror("recv failed");
+            exit(EXIT_FAILURE);
         }
 
         if (fileSize > 1024) {
