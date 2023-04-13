@@ -60,7 +60,7 @@ int main() {
         }
         string filename(buffer);
 
-        if (filename == '0') {
+        if (filename == "0") {
             break;
         }
 

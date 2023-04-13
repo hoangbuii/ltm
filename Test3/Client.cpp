@@ -60,7 +60,7 @@ int main() {
         cout << "Enter filename to download (type 0 to exit): ";
         cin >> filename;
         send(clientSocket, filename.c_str(), filename.length(), 0);
-        if (filename == '0') {
+        if (filename == "0") {
             break;
         }
         // Received exist file or not
