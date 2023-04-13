@@ -65,7 +65,11 @@ int main() {
             exit(EXIT_FAILURE);
         } else {
             cout << buffer << endl;
+            if (buffer == "ERROR") {
+                continue;
+            }
         }
+
 
         // Receive file size from server
         int fileSize;
