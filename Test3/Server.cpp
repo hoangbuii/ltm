@@ -64,7 +64,7 @@ int main() {
             break;
         }
 
-        cout << "Received file name: " << filename << "bytes" << endl;
+        cout << "Received file name: " << filename << endl;
 
         // Check file exsit
         int exist = 0;
@@ -84,7 +84,7 @@ int main() {
 
         // Send file size to client
         sendto(serverSocket, (char *)&fileSize, sizeof(int), 0, (struct sockaddr *)&clientAddress, len);
-        cout << "File size: " << fileSize << endl;
+        cout << "File size: " << fileSize << "bytes" << endl;
 
         // Send file to client
         char fileBuffer[BUFFER_SIZE];
@@ -97,6 +97,7 @@ int main() {
     }
     
     // Exit server
+    cout << "Client disconnected!" << endl;
     close(serverSocket);
     
     return 0;

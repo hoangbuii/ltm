@@ -109,6 +109,7 @@ int main() {
     }
 
     // Close socket and exit client
+    cout << "Disconnected to server!" << endl;
     close(clientSocket);
     return 0;
 }
