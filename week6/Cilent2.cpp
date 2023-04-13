@@ -19,8 +19,8 @@ int main() {
     // set up server address
     struct sockaddr_in serverAddress;
     serverAddress.sin_family = AF_INET;
-    serverAddress.sin_port = htons(12345);
-    serverAddress.sin_addr.s_addr = inet_addr("SERVER_IP_ADDRESS");
+    serverAddress.sin_port = htons(8080);
+    serverAddress.sin_addr.s_addr = inet_addr("192.168.92.101");
 
     // connect to server
     if (connect(clientSocket, (struct sockaddr*) &serverAddress, sizeof(serverAddress)) < 0) {
