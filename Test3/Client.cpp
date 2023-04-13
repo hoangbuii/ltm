@@ -67,6 +67,14 @@ int main() {
             exit(EXIT_FAILURE);
         }
 
+        memset(buffer, 0, sizeof(buffer));
+        if (recv(clientSocket, buffer, BUFFER_SIZE, 0) < 0) {
+            perror("recv failed");
+            exit(EXIT_FAILURE);
+        } else {
+            cout << buffer << endl;
+        }
+
         if (fileSize > 1024) {
             cout << "File not found" << endl;
             continue;
