@@ -65,7 +65,7 @@ int main() {
         ifstream file(filename, ios::binary);
         if (!file.is_open()) {
             cout << "File " << filename << " not found" << endl;
-            sendto(serverSocket, success, sizeof(success), 0);
+            sendto(serverSocket, &success, sizeof(success), 0);
             //sendto(serverSocket, "ERROR", strlen("ERROR"), 0, (struct sockaddr *)&clientAddress, len);
             //exit(EXIT_FAILURE);
             continue;

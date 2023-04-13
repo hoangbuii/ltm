@@ -72,7 +72,7 @@ int main() {
         // cout << "!!!" << endl;
 
         int success = -1;
-        if (recv(clientSocket, success, sizeof(success), 0) < 0) {
+        if (recv(clientSocket, &success, sizeof(success), 0) < 0) {
             perror("recv failed");
             exit(EXIT_FAILURE);
         } 
