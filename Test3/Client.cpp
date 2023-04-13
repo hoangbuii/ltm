@@ -59,22 +59,17 @@ int main() {
         cin >> filename;
         send(clientSocket, filename.c_str(), filename.length(), 0);
 
-        memset(buffer, 0, sizeof(buffer));
-        if (recv(clientSocket, buffer, BUFFER_SIZE, 0) < 0) {
-            perror("recv failed");
-            exit(EXIT_FAILURE);
-        } else {
-            cout << buffer;
-        }
-
         // Receive file size from server
         int fileSize;
         memset(buffer, 0, sizeof(buffer));
         if (recv(clientSocket, (char *)&fileSize, sizeof(int), 0) < 0) {
             perror("recv failed");
             exit(EXIT_FAILURE);
-        } else {
-            cout << fileSize;
+        }
+
+        if (fileSize > 1024) {
+            cout << "File not found" << endl;
+            continue;
         }
 
         // Display file size and download file
