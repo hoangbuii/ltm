@@ -40,16 +40,16 @@ int main() {
 
 
     // Receive request from client
-        if (recvfrom(serverSocket, buffer, BUFFER_SIZE, 0, (struct sockaddr *)&clientAddress, (socklen_t *)&len) < 0) {
+    if (recvfrom(serverSocket, buffer, BUFFER_SIZE, 0, (struct sockaddr *)&clientAddress, (socklen_t *)&len) < 0) {
             
-            perror("recvfrom failed");
-            exit(EXIT_FAILURE);
-        }
-        // Send acknowledgement to client
-        sendto(serverSocket, "ACK", strlen("ACK"), 0, (struct sockaddr *)&clientAddress, len);
+        perror("recvfrom failed");
+        exit(EXIT_FAILURE);
+    } else {
+        cout << "Client connected!" << endl;
+    }
+    // Send acknowledgement to client
+    sendto(serverSocket, "ACK", strlen("ACK"), 0, (struct sockaddr *)&clientAddress, len);
         
-        
-
     while (true) {
 
         // Receive filename from client
@@ -60,29 +60,31 @@ int main() {
         }
         string filename(buffer);
 
-        // Open file and get size
-        int success = 0;
+        if (filename == '0') {
+            break;
+        }
+
+        cout << "Received file name: " << filename << "bytes" << endl;
+
+        // Check file exsit
+        int exist = 0;
         ifstream file(filename, ios::binary);
         if (!file.is_open()) {
             cout << "File " << filename << " not found" << endl;
-
-            sendto(serverSocket, (char *)&success, sizeof(int), 0, (struct sockaddr *)&clientAddress, len);
-
-            //send(serverSocket, &success, sizeof(success), 0);
-            //sendto(serverSocket, "ERROR", strlen("ERROR"), 0, (struct sockaddr *)&clientAddress, len);
-            //exit(EXIT_FAILURE);
+            sendto(serverSocket, (char *)&exist, sizeof(int), 0, (struct sockaddr *)&clientAddress, len);
             continue;
         } else {
-            success = 1;
-            sendto(serverSocket, (char *)&success, sizeof(int), 0, (struct sockaddr *)&clientAddress, len);
-            //sendto(serverSocket, "OK", strlen("OK"), 0, (struct sockaddr *)&clientAddress, len);
+            exist = 1;
+            sendto(serverSocket, (char *)&exist, sizeof(int), 0, (struct sockaddr *)&clientAddress, len);
         }
+        // Get file size
         file.seekg(0, ios::end);
         int fileSize = file.tellg();
         file.seekg(0, ios::beg);
 
         // Send file size to client
         sendto(serverSocket, (char *)&fileSize, sizeof(int), 0, (struct sockaddr *)&clientAddress, len);
+        cout << "File size: " << fileSize << endl;
 
         // Send file to client
         char fileBuffer[BUFFER_SIZE];

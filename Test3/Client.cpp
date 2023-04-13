@@ -51,33 +51,26 @@ int main() {
             exit(EXIT_FAILURE);
         }
 
+    cout << "Connected to server!" << endl;
+
     while (true) {
 
         // Send filename to server
         string filename;
-        cout << "Enter filename to download: ";
+        cout << "Enter filename to download (type 0 to exit): ";
         cin >> filename;
         send(clientSocket, filename.c_str(), filename.length(), 0);
-
-        // memset(buffer, 0, sizeof(buffer));
-        // if (recv(clientSocket, buffer, BUFFER_SIZE, 0) < 0) {
-        //     perror("recv failed");
-        //     exit(EXIT_FAILURE);
-        // } 
-        // cout << buffer << '.' << endl;
-        // if (buffer == "ERROR") {
-            
-        //     continue;
-        // }
-        // cout << "!!!" << endl;
-
-        int success = -1;
-        if (recv(clientSocket, (char *)&success, sizeof(int), 0) < 0) {
+        if (filename == '0') {
+            break;
+        }
+        // Received exist file or not
+        int exist = -1;
+        if (recv(clientSocket, (char *)&exist, sizeof(int), 0) < 0) {
             perror("recv failed");
             exit(EXIT_FAILURE);
         } 
-        cout << '-' << success << '-' << endl;
-        if (success == 0) {
+        //cout << '-' << exist << '-' << endl;
+        if (exist == 0) {
             continue;
         }
 
@@ -89,10 +82,10 @@ int main() {
             exit(EXIT_FAILURE);
         }
 
-        if (fileSize > 1024) {
-            cout << "File not found" << endl;
-            continue;
-        }
+        // if (fileSize > 1024) {
+        //     cout << "File not found" << endl;
+        //     continue;
+        // }
 
         // Display file size and download file
         cout << "File size: " << fileSize << " bytes" << endl;
