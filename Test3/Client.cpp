@@ -66,7 +66,7 @@ int main() {
             perror("recv failed");
             exit(EXIT_FAILURE);
         } else {
-            cout << fileSize;
+            cout << buffer;
         }
 
         fileSize = atol(buffer);
