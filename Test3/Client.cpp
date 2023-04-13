@@ -49,6 +49,8 @@ int main() {
         if (recv(clientSocket, buffer, BUFFER_SIZE, 0) < 0) {
             perror("recv failed");
             exit(EXIT_FAILURE);
+        } else {
+            cout << buffer;
         }
 
     while (true) {
