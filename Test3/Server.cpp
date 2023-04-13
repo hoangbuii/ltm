@@ -38,9 +38,7 @@ int main() {
     len = sizeof(clientAddress);
     memset(buffer, 0, sizeof(buffer));
 
-    while (true) {
-
-        // Receive request from client
+    // Receive request from client
         if (recvfrom(serverSocket, buffer, BUFFER_SIZE, 0, (struct sockaddr *)&clientAddress, (socklen_t *)&len) < 0) {
             cout << buffer;
             perror("recvfrom failed");
@@ -49,6 +47,8 @@ int main() {
 
         // Send acknowledgement to client
         sendto(serverSocket, "ACK", strlen("ACK"), 0, (struct sockaddr *)&clientAddress, len);
+
+    while (true) {
 
         // Receive filename from client
         memset(buffer, 0, sizeof(buffer));

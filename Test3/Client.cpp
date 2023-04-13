@@ -41,11 +41,7 @@ int main() {
         exit(EXIT_FAILURE);
     }
 
-    
-
-    while (true) {
-
-        // Send request to server
+    // Send request to server
         send(clientSocket, "REQUEST", strlen("REQUEST"), 0);
 
         // Receive acknowledgement from server
@@ -54,6 +50,8 @@ int main() {
             perror("recv failed");
             exit(EXIT_FAILURE);
         }
+
+    while (true) {
 
         // Send filename to server
         string filename;
