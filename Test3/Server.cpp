@@ -40,9 +40,11 @@ int main() {
 
     // Receive request from client
         if (recvfrom(serverSocket, buffer, BUFFER_SIZE, 0, (struct sockaddr *)&clientAddress, (socklen_t *)&len) < 0) {
-            cout << buffer;
+            
             perror("recvfrom failed");
             exit(EXIT_FAILURE);
+        } else {
+            cout << buffer;
         }
 
         // Send acknowledgement to client
