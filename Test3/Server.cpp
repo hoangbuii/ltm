@@ -65,8 +65,8 @@ int main() {
         if (!file.is_open()) {
             cout << "File " << filename << " not found" << endl;
             sendto(serverSocket, "ERROR", strlen("ERROR"), 0, (struct sockaddr *)&clientAddress, len);
-            //exit(EXIT_FAILURE);
-            continue;
+            exit(EXIT_FAILURE);
+            //continue;
         }
         file.seekg(0, ios::end);
         int fileSize = file.tellg();
