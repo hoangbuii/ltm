@@ -71,6 +71,7 @@ int main() {
         } 
         //cout << '-' << exist << '-' << endl;
         if (exist == 0) {
+            cout << "File not found!" << endl;
             continue;
         }
 
@@ -83,7 +84,7 @@ int main() {
         }
 
         // if (fileSize > 1024) {
-        //     cout << "File not found" << endl;
+        //     
         //     continue;
         // }
 

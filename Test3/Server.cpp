@@ -84,7 +84,7 @@ int main() {
 
         // Send file size to client
         sendto(serverSocket, (char *)&fileSize, sizeof(int), 0, (struct sockaddr *)&clientAddress, len);
-        cout << "File size: " << fileSize << "bytes" << endl;
+        cout << "File size: " << fileSize << " bytes" << endl;
 
         // Send file to client
         char fileBuffer[BUFFER_SIZE];
