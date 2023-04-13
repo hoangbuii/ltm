@@ -18,7 +18,7 @@ int main() {
     // Create UDP socket
     if ((clientSocket = socket(AF_INET, SOCK_DGRAM, 0)) == 0) {
        
-        perror("socket failed");
+        cout << ("socket failed");
         exit(EXIT_FAILURE);
     }
 
