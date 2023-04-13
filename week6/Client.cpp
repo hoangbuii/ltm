@@ -19,7 +19,7 @@ int main() {
     if ((clientSocket = socket(AF_INET, SOCK_DGRAM, 0)) == 0) {
        
         cout << "socket failed";
-        exit(EXIT_FAILURE);
+        //exit(EXIT_FAILURE);
     }
 
     // // Get server IP address from user input
