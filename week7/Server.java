@@ -19,7 +19,8 @@ public class Server {
             if (command.equals("download")) {
                 String filename = in.readLine();
                 System.out.println("Received file name: " + filename);
-
+		    
+		filename = "SharedFolder/" + filename;
                 File file = new File(filename);
                 if (file.exists()) {
                     out.println("exist");
